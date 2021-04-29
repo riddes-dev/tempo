@@ -1,5 +1,3 @@
-import {useState} from 'react';
-
 function Tempo(props) {
     console.log('> Passando pelo Frontend;');
     const dynamicDate = new Date();
@@ -27,28 +25,5 @@ export async function getStaticProps(){
 }
 
 
-function Home(){
-    return (
-        <div>
-        <h1>Nova página</h1>
-        <Contador />
-        </div>
-        )
-}
 
-function Contador(){
-    const [contador,setContador] = useState(1);
-
-    function adicionarContador(){
-        setContador(contador + 1);
-    }
-
-    return(
-        <div>
-            <div>{contador}</div>
-            <button onClick={adicionarContador}>Adicionar</button>
-        </div>
-    )
-}
 export default Tempo;
-export default Home;
