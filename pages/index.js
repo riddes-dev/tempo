@@ -1,27 +1,29 @@
-import {useState} from 'react';
+function Tempo(props) {
+    console.log('> Passando pelo Frontend;');
+    const dynamicDate = new Date();
+    const dynamicDateString = dynamicDate.toGMTString();
 
-function Home(){
     return (
         <div>
-        <h1>Home</h1>
-        <Contador />
+            <div>{dynamicDateString} (Dinâmico)</div>
+            <div>{props.staticDateString} (Estático)</div>
         </div>
-        )
+    )  
 }
 
-function Contador(){
-    const [contador,setContador] = useState(1);
+export async function getStaticProps(){
+    console.log('> Passando pelo getStaticProps();');
+    const staticDate = new Date();
+    const staticDateString = staticDate.toGMTString();
 
-    function adicionarContador(){
-        setContador(contador + 1);
+    return {
+        props: {
+            staticDateString
+        },
+        revalidate: 1
     }
-
-    return(
-        <div>
-            <div>{contador}</div>
-            <button onClick={adicionarContador}>Adicionar</button>
-        </div>
-    )
 }
 
-export default Home;
+
+
+export default Tempo;
